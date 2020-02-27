@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function SavedList({ list }) {
   return (
@@ -7,13 +7,13 @@ function SavedList({ list }) {
       <h3>Saved Movies:</h3>
       {list.map(movie => {
         return (
-          <NavLink
+          <Link
             to={`/movies/${movie.id}`}
             key={movie.id}
             activeClassName="saved-active"
           >
             <span className="saved-movie">{movie.title}</span>
-          </NavLink>
+          </Link>
         )
       })}
       <div className="home-button">

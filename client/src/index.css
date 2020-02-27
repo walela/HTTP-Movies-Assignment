@@ -5,6 +5,10 @@ body {
   background-color: #7db5f7;
 }
 
+.movie-list a {
+  text-decoration: none;
+}
+
 .movie-card {
   width: 75vw;
   background-color: #fff;
@@ -14,7 +18,7 @@ body {
   position: relative;
   margin: 1rem auto;
   border-radius: 5px;
-  color: rgb(12, 11, 11);
+  color: rgb(12, 13, 22);
 }
 
 .movie-director {
@@ -23,7 +27,6 @@ body {
 }
 
 .saved-list {
-  box-shadow: -4px 6px 6px rgb(179, 175, 168);
   background-color: #fff;
   border: 0;
   padding: 1rem;
@@ -74,4 +77,25 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.update-movie {
+  margin-top: 12px;
+  padding: 12px;
+}
+
+fieldset {
+  width: 42vw;
+  margin: 48px 11.5vw;
+  border: 2px solid black;
+}
+
+fieldset input {
+  width: 75%;
+  padding: 18px;
+  border: 2px solid rgb(194, 13, 194);
+  margin-left: 12px;
+  margin-top: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.3rem;
 }
