@@ -1,11 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const CORS = require("cors");
+const express = require("express")
+const bodyParser = require("body-parser")
+const CORS = require("cors")
 
-const app = express();
+const app = express()
 
-app.use(bodyParser.json());
-app.use(CORS());
+app.use(bodyParser.json())
+app.use(CORS())
 
 let movies = [
   {
@@ -50,32 +50,32 @@ let movies = [
     metascore: 89,
     stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"]
   }
-];
+]
 
-let movieId = movies.length;
+let movieId = movies.length
 
 app.get("/api/movies", (req, res) => {
-  res.send(movies);
-});
+  res.send(movies)
+})
 
 app.get("/api/movies/:id", (req, res) => {
-  const movie = movies.filter(movie => `${movie.id}` === req.params.id)[0];
-  res.status(200).json(movie);
-});
+  const movie = movies.filter(movie => `${movie.id}` === req.params.id)[0]
+  res.status(200).json(movie)
+})
 
 app.post("/api/movies", (req, res) => {
   if (req.body.title !== undefined) {
-    const newMovie = req.body;
-    newMovie["id"] = movieId;
-    movies.push(newMovie);
+    const newMovie = req.body
+    newMovie["id"] = movieId
+    movies.push(newMovie)
   }
-  ++movieId;
-  res.status(201).json(movies);
-});
+  ++movieId
+  res.status(201).json(movies)
+})
 
 app.put("/api/movies/:id", (req, res) => {
   if (!req.params.id)
-    res.status(400).send("Your request is missing the movie id");
+    res.status(400).send("Your request is missing the movie id")
   if (
     req.body.id === undefined ||
     !req.body.title ||
@@ -85,28 +85,28 @@ app.put("/api/movies/:id", (req, res) => {
   ) {
     res
       .status(422)
-      .send("Make sure your request body has all the fields it needs");
+      .send("Make sure your request body has all the fields it needs")
   }
   movies = movies.map(movie => {
     if (`${movie.id}` === req.params.id) {
-      return req.body;
+      return req.body
     }
-    return movie;
-  });
-  res.status(200).send(req.body);
-});
+    return movie
+  })
+  res.status(200).send(req.body)
+})
 
 app.delete("/api/movies/:id", (req, res) => {
   if (!req.params.id)
-    res.status(400).send("Your request is missing the movie id");
-  movies = movies.filter(movie => `${movie.id}` !== req.params.id);
-  res.status(202).send(req.params.id);
-});
+    res.status(400).send("Your request is missing the movie id")
+  movies = movies.filter(movie => `${movie.id}` !== req.params.id)
+  res.status(202).send(req.params.id)
+})
 
 app.get("/", function(req, res) {
-  res.send("App is working 👍");
-});
+  res.send("App is working 👍")
+})
 
 app.listen(5000, () => {
-  console.log("Server listening on port 5000");
-});
+  console.log("Server listening on port 5000")
+})
